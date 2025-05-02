@@ -118,5 +118,142 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-size: 16px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* 统一按钮样式 */
+  button, 
+  [role="button"],
+  .btn {
+    @apply min-w-[100px] justify-center items-center inline-flex;
+  }
+  
+  /* 小型按钮样式统一 */
+  button[size="sm"],
+  [role="button"][size="sm"],
+  .btn-sm {
+    @apply min-w-[80px];
+  }
+  
+  /* 图标按钮样式统一 */
+  button[size="icon"],
+  [role="button"][size="icon"],
+  .btn-icon {
+    @apply min-w-0 w-10 h-10 p-2;
+  }
+  
+  /* 改善表单元素样式 */
+  input, 
+  select, 
+  textarea {
+    @apply w-full;
+  }
+  
+  /* 图片响应式展示 */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* 移动端优化 */
+@media (max-width: 640px) {
+  body {
+    @apply text-sm;
+  }
+  
+  /* 增加移动端按钮的可点击区域 */
+  button, 
+  [role="button"],
+  .btn,
+  .interactive-element {
+    @apply min-h-[44px];
+    touch-action: manipulation;
+  }
+  
+  /* 移动端按钮宽度调整 */
+  button:not([size="icon"]), 
+  [role="button"]:not([size="icon"]),
+  .btn:not(.btn-icon) {
+    @apply min-w-[80px];
+  }
+  
+  /* 移动端表单元素优化 */
+  input, 
+  select, 
+  textarea {
+    @apply text-base; /* 移动端输入更友好的字体大小 */
+    font-size: 16px !important; /* 防止iOS缩放 */
+  }
+  
+  /* 移动端间距调整 */
+  .container {
+    @apply px-4;
+  }
+  
+  /* 移动端卡片样式调整 */
+  .card {
+    @apply rounded-lg p-3;
+  }
+}
+
+/* 平板设备优化 */
+@media (min-width: 641px) and (max-width: 1024px) {
+  /* 平板设备按钮宽度调整 */
+  button:not([size="icon"]), 
+  [role="button"]:not([size="icon"]),
+  .btn:not(.btn-icon) {
+    @apply min-w-[90px];
+  }
+  
+  /* 平板设备间距调整 */
+  .container {
+    @apply px-6;
+  }
+}
+
+/* 统一过渡效果 */
+.transition-standard {
+  @apply transition-all duration-200 ease-in-out;
+}
+
+/* 统一阴影效果 */
+.shadow-standard {
+  @apply shadow-md;
+}
+
+/* 统一圆角效果 */
+.rounded-standard {
+  @apply rounded-lg;
+}
+
+/* 改善滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-muted/50;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-muted-foreground/30 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-muted-foreground/50;
+}
+
+/* 改善焦点状态 */
+:focus-visible {
+  @apply outline-none ring-2 ring-ring/70;
+}
+
+/* 改善触摸反馈 */
+@media (hover: hover) {
+  .hover-effect:hover {
+    @apply bg-muted/50;
   }
 }
